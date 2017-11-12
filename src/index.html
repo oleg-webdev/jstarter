@@ -5,9 +5,12 @@
 	<title>Document</title>
 </head>
 <body>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum ipsam distinctio voluptates, quod recusandae sit, illo autem explicabo laudantium ipsum eos natus dolorum inventore provident, atque beatae fugiat officia debitis!</p>
-	<h1>Lorem ipsum dolor.</h1>
-	<img src="img/webpack_logo.png"/>
+
+
+	<div>${require('./partial/somepart.html')}</div>
+	<div><%= require('html-loader!./partial/somepart.html') %></div>
+	<div><%= require('html!./partial/somepart.html') %></div>
+	<div><%= require('./partial/somepart.html') %></div>
 	
 
 </body>

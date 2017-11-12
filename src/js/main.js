@@ -1,3 +1,3 @@
 import '../css/style.scss';
-
-console.log('dev...');
+import 'jquery';
+import 'bootstrap';
