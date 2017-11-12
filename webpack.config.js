@@ -2,8 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-// const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
     filename: "[name].style.css"
@@ -36,13 +36,8 @@ module.exports = {
 				})
 			},
 			{
-				test: /\.(html)$/,
-				use: {
-					loader: 'html-loader',
-					options: {
-						attrs: [':data-src']
-					}
-				}
+				test: /\.html$/,
+				loader: 'html-loader?minimize=false'
 			},
 			{
 				test: /\.(jpg|png)$/,
@@ -68,9 +63,14 @@ module.exports = {
 			Popper: ['popper.js', 'default'],
 		}),
 		new HtmlWebpackPlugin({
-			template: 'src/index.html'
+			filename: 'index.html',
+			template: 'src/index.hbs',
 		}),
-		// new CleanWebpackPlugin(['dist']),
+		new HtmlWebpackPlugin({
+			filename: 'about.html',
+			template: 'src/about.hbs',
+		}),
+		new CleanWebpackPlugin(['dist']),
 		// new UglifyJSPlugin()
 	]
 };
