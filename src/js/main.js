@@ -1,27 +1,27 @@
-import '../css/style.scss';
 import 'jquery';
-// import Popper from 'popper.js';
-// window.Popper = Popper;
 // import 'bootstrap';
+// import Popper from 'popper.js';
+import '../css/style.scss';
 
+// window.Popper = Popper;
 
-import {externalConst} from './modules/externalModule';
+// import {externalConst} from './modules/externalModule';
 
-let testFunc = () => {
-	
-	console.log(this);
+const testFunc = () => {
+  console.log(this);
 };
 
-let someperson = new testFunc();
+testFunc();
 
-function someFunc() {
-	let that = this
-	that.name = 'Alice';
+function SomeFunc() {
+  const that = this;
+  that.name = 'Alice';
 
-	let testFunc = function() {
-		console.log(that.name);
-	};
-	testFunc();
+  const innerFunc = function () {
+    console.log(that.name);
+  };
+
+  innerFunc();
 }
 
-let person = new someFunc();
+SomeFunc();
