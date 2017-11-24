@@ -1,7 +1,10 @@
 import 'jquery';
 // import 'bootstrap';
 // import Popper from 'popper.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import '../css/style.scss';
+import ExternalModule from './modules/ExternalModule.jsx';
 
 // window.Popper = Popper;
 
@@ -17,11 +20,17 @@ function SomeFunc() {
   const that = this;
   that.name = 'Alice';
 
-  const innerFunc = function () {
+  function innerFunc() {
     console.log(that.name);
-  };
+  }
 
   innerFunc();
 }
 
-SomeFunc();
+new SomeFunc();
+
+const root = document.getElementById('app');
+
+if (root !== null) {
+  ReactDOM.render(<ExternalModule />, document.getElementById('app'));
+}
