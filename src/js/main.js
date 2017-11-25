@@ -4,7 +4,7 @@ import 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../css/style.scss';
-import ExternalModule from './modules/ExternalModule.jsx';
+import ExternalModule from './modules/ExternalModule';
 
 // window.Popper = Popper;
 
