@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
@@ -27,6 +28,9 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['es2015', 'react'],
+              plugins: [
+                ['transform-class-properties', { spec: true }],
+              ],
             },
           },
         ],
