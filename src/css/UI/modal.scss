@@ -1,0 +1,33 @@
+@import '../variables';
+
+.generic-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.397);
+}
+
+.UI-modal-body {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 101;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  &.show {
+    display: flex;
+  }
+
+  .inner-modal-wrapper {
+    padding: 20px;
+    background-color: #fff;
+  }
+}
