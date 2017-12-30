@@ -19,6 +19,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     rules: [
       {
@@ -43,7 +46,8 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'html-loader?minimize=false',
+        exclude: /node_modules/,
+        use: { loader: 'html-loader?minimize=false' },
       },
       {
         test: /\.(jpg|png)$/,
@@ -71,10 +75,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.hbs',
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'about.html',
-      template: 'src/about.hbs',
     }),
     new CleanWebpackPlugin(['dist']),
     // new UglifyJSPlugin()
