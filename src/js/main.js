@@ -11,8 +11,8 @@ import about from '../routes/about.html';
 
 const links = {
   // for 2nd approach
-  // '/': 'routes/home.html',
-  // '/about': 'routes/about.html',
+  // '/': 'src/routes/home.html',
+  // '/about': 'src/routes/about.html',
   '/': home,
   '/about': about,
 };
