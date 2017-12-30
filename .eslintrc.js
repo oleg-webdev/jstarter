@@ -1,6 +1,10 @@
 module.exports = {
+  "env": {
+    "browser": true
+  },
   "rules": {
     "no-new": 0,
+    "no-alert": 0,
     "no-console": 0,
     'arrow-body-style': 0,
     // "react/prefer-stateless-function": 0,
