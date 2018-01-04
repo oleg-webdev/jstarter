@@ -11,27 +11,17 @@ class UiAlert {
   }
 
   init() {
-    const { element } = this;
-    let { answer } = this;
-    answer = 'pending';
-    this.removed = false;
-
-    this.initializeBackdrop();
-    element.classList.add('show');
-    setTimeout(() => {
-      element.querySelector('.inner-modal-wrapper')
-        .classList.add('reveal');
-    }, 0);
+    this.prepareToInit();
 
     return new Promise((resolve, reject) => {
-      const confirmButton = element.querySelector('.confirm');
+      const confirmButton = this.element.querySelector('.confirm');
 
       /** *
        * Reject
        */
       // Modal window have to contain the button.
       if (!confirmButton) {
-        answer = false;
+        this.answer = false;
         reject(new Error('Modal window have to contain the button.'));
       }
 
@@ -40,19 +30,34 @@ class UiAlert {
        */
       // Handle button click
       confirmButton.addEventListener('click', (event) => {
-        answer = 'confirmed';
-        resolve({ event, answer });
+        this.answer = 'confirmed';
+        resolve({ event, answer: this.answer });
         this.revoke();
       });
+
       // Click on wrapper
       this.element.addEventListener('click', (event) => {
         if (event.target.classList.contains('UI-modal-body')) {
-          answer = 'confirmed';
-          resolve({ event, answer });
+          this.answer = 'dismiss-alert';
+          resolve({ event, answer: this.answer });
           this.revoke();
         }
       });
     });
+  }
+
+  prepareToInit() {
+    const { element } = this;
+
+    this.answer = 'pending';
+    this.removed = false;
+
+    this.initializeBackdrop();
+    element.classList.add('show');
+    setTimeout(() => {
+      element.querySelector('.inner-modal-wrapper')
+        .classList.add('reveal');
+    }, 0);
   }
 
   revoke() {
