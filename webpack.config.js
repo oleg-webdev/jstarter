@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
@@ -16,8 +15,23 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      jQuery: 'jquery/src/jquery',
+      $: 'jquery/src/jquery',
+      // yarn add scrollmagic gsap
+      // 'TweenLite': path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js'),
+      // 'TweenMax': path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js'),
+      // 'TimelineLite': path.resolve('node_modules', 'gsap/src/uncompressed/TimelineLite.js'),
+      // 'TimelineMax': path.resolve('node_modules', 'gsap/src/uncompressed/TimelineMax.js'),
+      // 'ScrollMagic': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
+      // 'animation.gsap': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'),
+      // 'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
+    },
   },
   module: {
     rules: [
@@ -28,9 +42,6 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['es2015', 'react', 'stage-2'],
-              plugins: [
-                ['transform-class-properties', { spec: true }],
-              ],
             },
           },
         ],
@@ -63,18 +74,14 @@ module.exports = {
   plugins: [
     extractSass,
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      Popper: ['popper.js', 'default'],
+      // $: 'jquery',
+      // jQuery: 'jquery',
+      // 'window.jQuery': 'jquery',
+      // Popper: ['popper.js', 'default'],
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.hbs',
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'about.html',
-      template: 'src/about.hbs',
     }),
     new CleanWebpackPlugin(['dist']),
     // new UglifyJSPlugin()
