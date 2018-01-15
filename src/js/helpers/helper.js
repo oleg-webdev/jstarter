@@ -20,7 +20,7 @@ export const makeId = (len) => {
  * A random number between the given range
  * @returns Number
  * @param {*minimum number} min
- * @param {* maximum number} max
+ * @param {*maximum number} max
  */
 export const getRandom = (min, max) => {
   const rnd = (Math.random() * (max - min)) + min;
