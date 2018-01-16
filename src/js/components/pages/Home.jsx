@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import DummyComponent from '../DummyComponent/DummyComponent';
 
 import * as acts from '../../store/actions';
 
@@ -21,6 +22,7 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <DummyComponent />
         <input
           type="text"
           value={this.state.searchTerm}

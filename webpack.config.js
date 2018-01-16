@@ -4,16 +4,15 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
-const extractSass = new ExtractTextPlugin({
-  filename: '[name].style.css',
-});
+const autoPrefixer = require('autoprefixer');
 
 module.exports = {
+  devtool: 'cheap-module-eval-source-map',
   entry: './src/js/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    publicPath: '',
   },
   devServer: {
     historyApiFallback: true,
@@ -37,19 +36,53 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['es2015', 'react', 'stage-2'],
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: true,
+                localIdentName: '[name]__[local]_[hash:base64:5]',
+              },
             },
-          },
-        ],
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: () => [
+                  autoPrefixer({
+                    browsers: [
+                      '> 1%',
+                      'last 2 versions',
+                    ],
+                  }),
+                ],
+              },
+            },
+          ],
+        }),
       },
       {
         test: /\.scss$/,
-        use: extractSass.extract({
-          use: ['css-loader', 'sass-loader'],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 2,
+                localIdentName: '[name]__[local]_[hash:base64:5]',
+              },
+            },
+            'sass-loader',
+          ],
         }),
       },
       {
@@ -72,7 +105,7 @@ module.exports = {
     ],
   },
   plugins: [
-    extractSass,
+    new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
     // new webpack.ProvidePlugin({
     // $: 'jquery',
     // jQuery: 'jquery',
