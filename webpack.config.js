@@ -90,7 +90,7 @@ module.exports = {
         loader: 'html-loader?minimize=false',
       },
       {
-        test: /\.(jpg|png)$/,
+        test: /\.(jpe?g|png|gif)$/,
         use: [
           {
             loader: 'file-loader',
