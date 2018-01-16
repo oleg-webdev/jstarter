@@ -1,11 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoPrefixer = require('autoprefixer');
+/* eslint-enable */
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: './src/js/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -117,5 +120,6 @@ module.exports = {
       template: `${__dirname}/src/index.hbs`,
     }),
     new CleanWebpackPlugin(['dist']),
+    new webpack.optimize.UglifyJsPlugin(),
   ],
 };

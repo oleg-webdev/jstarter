@@ -6,7 +6,7 @@
   "scripts": {
     "styles": "node-sass -w src/css/ -o dist/styles/ --output-style compressed",
     "dev": "webpack-dev-server",
-    "prod": "webpack -p"
+    "prod": "webpack --config webpack.prod.config.js --progress --profile --color"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +38,7 @@
     "postcss-loader": "^2.0.10",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.4"
   },

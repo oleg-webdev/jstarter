@@ -22,8 +22,16 @@ class AppEntry extends Component {
         <BrowserRouter>
           <Aux>
             <h1>{this.state.headTitle}</h1>
-            <Link to="/">Home</Link>
-            <Link to="/about-us">About</Link>
+            <ul className="nav">
+              <li className="nav-item">
+                <Link to="/" className="nav-link">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/about-us" className="nav-link">About</Link>
+              </li>
+            </ul>
+
+
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about-us" component={AsyncAbout} />
