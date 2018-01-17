@@ -11,7 +11,7 @@ class dummyComponent extends Component {
     return (
       <div className={classes.dummyClasses}>
         <hr />
-        <p>{this.state.name}</p>
+        <p className="testing-purposes">{this.state.name}</p>
         <img src={girl} alt="girl-pic" className={classes.girlImg} />
         <hr />
       </div>
