@@ -31,8 +31,8 @@ class AppEntry extends Component {
               </li>
             </ul>
 
-
-            <Switch>
+            {/* key only for HMR */}
+            <Switch key={Math.random()}>
               <Route exact path="/" component={Home} />
               <Route exact path="/about-us" component={AsyncAbout} />
             </Switch>

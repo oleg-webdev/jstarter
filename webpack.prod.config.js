@@ -8,8 +8,11 @@ const autoPrefixer = require('autoprefixer');
 /* eslint-enable */
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
-  entry: './src/js/main.js',
+  devtool: 'source-map',
+  entry: [
+    'babel-polyfill',
+    './src/js/main.js',
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -51,6 +54,7 @@ module.exports = {
                 importLoaders: 1,
                 modules: true,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
+                sourceMap: true,
               },
             },
             {
@@ -81,6 +85,7 @@ module.exports = {
                 modules: true,
                 importLoaders: 2,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
+                sourceMap: true,
               },
             },
             'sass-loader',

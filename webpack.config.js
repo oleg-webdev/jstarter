@@ -6,7 +6,11 @@ const autoPrefixer = require('autoprefixer');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: './src/js/main.js',
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    './src/js/main.js',
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -48,6 +52,7 @@ module.exports = {
                 importLoaders: 1,
                 modules: true,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
+                sourceMap: true,
               },
             },
             {
@@ -78,6 +83,7 @@ module.exports = {
                 modules: true,
                 importLoaders: 2,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
+                sourceMap: true,
               },
             },
             'sass-loader',
