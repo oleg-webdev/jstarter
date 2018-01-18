@@ -105,7 +105,7 @@ module.exports = {
               limit: 8192,
               name: '[name].[ext]',
               outputPath: 'img/',
-              publicPath: 'src/',
+              publicPath: '',
             },
           },
         ],
@@ -125,6 +125,6 @@ module.exports = {
       template: `${__dirname}/src/index.hbs`,
     }),
     new CleanWebpackPlugin(['dist']),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ sourceMap: true, minimize: true }),
   ],
 };
