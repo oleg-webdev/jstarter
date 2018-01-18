@@ -1,16 +1,16 @@
 {
   "name": "jsstarter",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "styles": "node-sass -w src/css/ -o dist/styles/ --output-style compressed",
     "dev": "webpack-dev-server",
     "hot": "webpack-dev-server --hot",
     "prod": "webpack --config webpack.prod.config.js --progress --profile --color -p",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "styles": "node-sass -w src/css/ -o dist/styles/ --output-style compressed",
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
@@ -24,7 +24,7 @@
       "\\.(css|scss)$": "identity-obj-proxy"
     }
   },
-  "author": "",
+  "author": "oleg-webdev",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^7.2.5",
