@@ -8,7 +8,7 @@ import * as acts from '../../store/actions';
 class Home extends Component {
   state = {
     searchTerm: 'Home...',
-  }
+  };
 
   componentDidMount() {
     console.log(this.state.searchTerm);
@@ -22,12 +22,15 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <h3>Lorem, ipsum dolor.</h3>
         <DummyComponent />
         <input
           type="text"
           value={this.state.searchTerm}
           onChange={this.onUserSearch}
-          ref={(input) => { this.inputElem = input; }}
+          ref={(input) => {
+            this.inputElem = input;
+          }}
         />
         <button onClick={() => this.props.incrementCounter(1)}>Increment</button>
         <button onClick={this.props.decrementCounter}>Decrement</button>
