@@ -14,7 +14,7 @@ const AsyncAbout = asyncComponent(() => {
 class AppEntry extends Component {
   state = {
     headTitle: 'Headtitle',
-  }
+  };
 
   render() {
     return (
@@ -24,10 +24,14 @@ class AppEntry extends Component {
             <h1>{this.state.headTitle}</h1>
             <ul className="nav">
               <li className="nav-item">
-                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/" className="nav-link">
+                  Home
+                </Link>
               </li>
               <li className="nav-item">
-                <Link to="/about-us" className="nav-link">About</Link>
+                <Link to="/about-us" className="nav-link">
+                  About
+                </Link>
               </li>
             </ul>
 
@@ -42,6 +46,5 @@ class AppEntry extends Component {
     );
   }
 }
-
 
 export default AppEntry;
