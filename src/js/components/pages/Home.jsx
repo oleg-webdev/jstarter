@@ -22,7 +22,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h3>Lorem, ipsum dolor.</h3>
+        <h3>Lorem, ipsum dolor...</h3>
         <DummyComponent />
         <input
           type="text"

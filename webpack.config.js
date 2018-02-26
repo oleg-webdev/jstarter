@@ -3,6 +3,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoPrefixer = require('autoprefixer');
+const flexbugsFixes = require('postcss-flexbugs-fixes');
+
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -14,8 +16,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    chunkFilename: '[id]_lazy_partial.js',
-    publicPath: '',
+    chunkFilename: '[id]_[chunkhash]_lazy_partial.js',
+    publicPath: '/',
   },
   devServer: {
     publicPath: '',
@@ -23,18 +25,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    alias: {
-      jQuery: 'jquery/src/jquery',
-      $: 'jquery/src/jquery',
-      // yarn add scrollmagic gsap
-      // 'TweenLite': path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js'),
-      // 'TweenMax': path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js'),
-      // 'TimelineLite': path.resolve('node_modules', 'gsap/src/uncompressed/TimelineLite.js'),
-      // 'TimelineMax': path.resolve('node_modules', 'gsap/src/uncompressed/TimelineMax.js'),
-      // 'ScrollMagic': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
-      // 'animation.gsap': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'),
-      // 'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
-    },
   },
   module: {
     rules: [
@@ -43,6 +33,9 @@ module.exports = {
         loader: 'babel-loader',
         query: { compact: false },
       },
+
+      // Styles start
+
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -62,11 +55,15 @@ module.exports = {
               options: {
                 ident: 'postcss',
                 plugins: () => [
+                  flexbugsFixes,
                   autoPrefixer({
                     browsers: [
-                      '> 1%',
-                      'last 2 versions',
+                      '>1%',
+                      'last 4 versions',
+                      'Firefox ESR',
+                      'not ie < 9',
                     ],
+                    flexbox: 'no-2009',
                   }),
                 ],
               },
@@ -85,7 +82,7 @@ module.exports = {
                 modules: true,
                 importLoaders: 2,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
-                sourceMap: true,
+                sourceMap: false,
               },
             },
             'sass-loader',
@@ -93,19 +90,51 @@ module.exports = {
         }),
       },
       {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: false,
+              },
+            },
+            'less-loader',
+          ],
+        }),
+      },
+
+      // End of styles
+
+      {
         test: /\.html$/,
-        loader: 'html-loader?minimize=false',
+        loader: 'html-loader',
       },
       {
-        test: /\.(jpe?g|png|gif)$/,
+        test: /\.(jpe?g|png|gif|ico)$/,
         use: [
           {
-            loader: 'url-loader', // file-loader
+            loader: 'file-loader', // file-loader url-loader
             options: {
               limit: 8192,
-              name: '[name].[ext]',
               outputPath: 'img/',
-              publicPath: '',
+              publicPath: '/img',
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'react-svg-loader',
+            options: {
+              jsx: true,
             },
           },
         ],
@@ -113,13 +142,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
-    // new webpack.ProvidePlugin({
-    // $: 'jquery',
-    // jQuery: 'jquery',
-    // 'window.jQuery': 'jquery',
-    // Popper: ['popper.js', 'default'],
-    // }),
+    new ExtractTextPlugin({ filename: 'styles/style.css', allChunks: true }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: `${__dirname}/src/index.hbs`,

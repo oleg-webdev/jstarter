@@ -1,4 +1,4 @@
-.idea/
+.jsbeautifyrc
+dist/
 node_modules/
-composer.phar
 coverage/

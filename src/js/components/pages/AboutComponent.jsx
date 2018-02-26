@@ -10,8 +10,7 @@ class AboutComponent extends Component {
       <div>
         <p>{this.state.searchTerm}</p>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto laborum esse maxime
-          est, explicabo dolor.
+          Loremsdsdfs
         </p>
       </div>
     );

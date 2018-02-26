@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './dummyComponent.scss';
-import girl from '../../../img/monochrome-girl.jpg';
+import { monochromeGirl } from '../../../img';
 
 class dummyComponent extends Component {
   state = {
@@ -8,11 +8,16 @@ class dummyComponent extends Component {
     out: false,
   };
 
+  componentDidMount() {
+    // console.log(girl);
+  }
+
+
   render() {
     return (
       <div className={classes.dummyClasses}>
         {this.state.out ? <p className="testing-purposes">{this.state.name}</p> : null}
-        <img src={girl} alt="girl-pic" className={classes.girlImg} />
+        <img src={monochromeGirl} alt="girl-pic" className={classes.girlImg} />
       </div>
     );
   }
