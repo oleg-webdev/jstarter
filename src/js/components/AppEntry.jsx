@@ -5,7 +5,6 @@ import asyncComponent from './hoc/asyncComponent';
 
 // Pages
 import Home from './pages/Home';
-import About from './pages/AboutComponent';
 
 // Class mapping
 const { 'text-center': tc } = classes;
@@ -18,7 +17,7 @@ const notFoundComponent = () => {
   );
 };
 
-const AsyncAbout = asyncComponent(() => About);
+const AsyncAbout = asyncComponent(() => import('./pages/AboutComponent'));
 
 class AppEntry extends Component {
   state = {
