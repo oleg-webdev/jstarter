@@ -7,6 +7,7 @@ const flexbugsFixes = require('postcss-flexbugs-fixes');
 
 
 module.exports = {
+  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'babel-polyfill',
@@ -105,6 +106,7 @@ module.exports = {
         }),
       },
 
+
       // End of styles
 
       {
@@ -118,9 +120,9 @@ module.exports = {
             loader: 'file-loader', // file-loader url-loader
             options: {
               limit: 8192,
+              name: '[name].[ext]',
               outputPath: 'img/',
               publicPath: '/img',
-              name: '[name].[ext]',
             },
           },
         ],
@@ -144,8 +146,20 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin({ filename: 'styles/style.css', allChunks: true }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: `${__dirname}/src/index.hbs`,
+      inject: true,
+      template: `${__dirname}/src/index.html`,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
     new CleanWebpackPlugin(['dist']),
   ],

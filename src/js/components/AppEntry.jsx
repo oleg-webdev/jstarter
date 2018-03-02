@@ -17,7 +17,7 @@ const notFoundComponent = () => {
   );
 };
 
-const AsyncAbout = asyncComponent(() => import('./pages/AboutComponent'));
+const About = asyncComponent(() => import('./pages/AboutComponent'));
 
 class AppEntry extends Component {
   state = {
@@ -47,7 +47,7 @@ class AppEntry extends Component {
 
                 <Switch location={location}>
                   <Route exact path="/" component={Home} />
-                  <Route exact path="/about-us" component={AsyncAbout} />
+                  <Route exact path="/about-us" component={About} />
                   <Route component={notFoundComponent} />
                 </Switch>
 

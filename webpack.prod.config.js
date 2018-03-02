@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
-const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -9,6 +8,7 @@ const flexbugsFixes = require('postcss-flexbugs-fixes');
 /* eslint-enable */
 
 module.exports = {
+  mode: 'production',
   entry: [
     'babel-polyfill',
     './src/js/main.js',
@@ -120,7 +120,7 @@ module.exports = {
               limit: 8192,
               name: '[name].[ext]',
               outputPath: 'img/',
-              publicPath: '/img',
+              publicPath: '/',
             },
           },
         ],
@@ -144,14 +144,22 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin({ filename: 'styles/style.css', allChunks: true }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: `${__dirname}/src/index.hbs`,
+      inject: true,
+      template: `${__dirname}/src/index.html`,
       minify: {
+        removeComments: true,
         collapseWhitespace: true,
-        preserveLineBreaks: false,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
       },
     }),
     new CleanWebpackPlugin(['dist']),
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: false, minimize: true }),
+    // new webpack.optimize.UglifyJsPlugin({ sourceMap: false, minimize: true }),
   ],
 };
