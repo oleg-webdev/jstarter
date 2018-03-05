@@ -15,6 +15,11 @@ export default (state = initialState, action) => {
           value: action.payload,
         }),
       };
+    case types.REQUEST_STORE_RESULT:
+      return {
+        ...state,
+        ...action.payload,
+      };
     case types.DELETE_RESULT:
       return {
         ...state,

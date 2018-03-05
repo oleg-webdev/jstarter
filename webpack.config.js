@@ -17,7 +17,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    chunkFilename: '[id]_[chunkhash]_lazy_partial.js',
+    chunkFilename: '[id]_[chunkhash]_chunk.js',
     publicPath: '/',
   },
   devServer: {

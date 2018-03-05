@@ -6,6 +6,7 @@ module.exports = {
       "ignoreUrls": true
     }],
     "no-new": 0,
+    "function-paren-newline": 0,
     "no-console": 0,
     'arrow-body-style': 0,
     "no-case-declarations": 0,

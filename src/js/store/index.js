@@ -1,5 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
+
+import rootSaga from './sagas';
 import counterReducer from './reducers/counter';
 import resultReducer from './reducers/result';
 // import crashReporter from './middlewares/logger';
@@ -10,7 +12,12 @@ const rootReducer = combineReducers({
 
 /* eslint-disable no-underscore-dangle */
 const composedEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
+const store = createStore(
+  rootReducer, composedEnhancers(applyMiddleware(...middlewares)),
+);
+sagaMiddleware.run(rootSaga);
 /* eslint-enable */
 
-// add middlwares in applyMiddleware func as an argument if needed
-export default createStore(rootReducer, composedEnhancers(applyMiddleware(thunk)));
+export default store;

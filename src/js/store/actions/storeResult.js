@@ -4,12 +4,10 @@ import * as types from './types';
 
 // Async Action
 export const onStoreResult = (cnt, dispatch) => {
-  setTimeout(() => {
-    dispatch({
-      type: types.STORE_RESULT,
-      payload: cnt,
-    });
-  }, 700);
+  dispatch({
+    type: types.REQUEST_STORE_RESULT,
+    payload: cnt,
+  });
 };
 
 export const onDeleteResult = identifier => ({

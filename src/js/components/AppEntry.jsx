@@ -34,14 +34,13 @@ class AppEntry extends Component {
                 <h1>{this.state.headTitle}</h1>
                 <ul className="nav">
                   <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                  Home
-                    </Link>
+                    <Link to="/" className="nav-link">Home</Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/about-us" className="nav-link">
-                  About
-                    </Link>
+                    <Link to="/about-us" className="nav-link">About</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="/sdfsdfsdf" className="nav-link">404</Link>
                   </li>
                 </ul>
 
