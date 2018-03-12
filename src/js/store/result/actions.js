@@ -3,12 +3,10 @@ import * as types from './types';
 // import store from '../';
 
 // Async Action
-export const onStoreResult = (cnt, dispatch) => {
-  dispatch({
-    type: types.REQUEST_STORE_RESULT,
-    payload: cnt,
-  });
-};
+export const onStoreResult = result => ({
+  type: types.STORE_RESULT_TRIGGER,
+  payload: result,
+});
 
 export const onDeleteResult = identifier => ({
   type: types.DELETE_RESULT,

@@ -1,7 +1,0 @@
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-
-export const REQUEST_STORE_RESULT = 'REQUEST_STORE_RESULT';
-export const STORE_RESULT = 'STORE_RESULT';
-
-export const DELETE_RESULT = 'DELETE_RESULT';

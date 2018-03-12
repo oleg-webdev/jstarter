@@ -1,10 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import rootSaga from './sagas';
-import counterReducer from './reducers/counter';
-import resultReducer from './reducers/result';
-// import crashReporter from './middlewares/logger';
+import rootSaga from './rootSaga';
+import counterReducer from './counter';
+import resultReducer from './result';
 
 const rootReducer = combineReducers({
   counterReducer, resultReducer,

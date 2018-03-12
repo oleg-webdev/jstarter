@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DummyComponent from '../DummyComponent/DummyComponent';
 
-import * as acts from '../../store/actions';
+import { incrementCounter, decrementCounter } from '../../store/counter/actions';
+import { onStoreResult, onDeleteResult } from '../../store/result/actions';
 
 class Home extends Component {
   state = {
@@ -73,10 +74,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    incrementCounter: () => dispatch(acts.incrementCounter(1)),
-    decrementCounter: () => dispatch(acts.decrementCounter()),
-    onStoreResult: result => acts.onStoreResult(result, dispatch), // Async action
-    onDeleteResult: id => dispatch(acts.onDeleteResult(id)),
+    incrementCounter: () => dispatch(incrementCounter(1)),
+    decrementCounter: () => dispatch(decrementCounter()),
+    onStoreResult: result => dispatch(onStoreResult(result)), // Async action
+    onDeleteResult: id => dispatch(onDeleteResult(id)),
   };
 };
 

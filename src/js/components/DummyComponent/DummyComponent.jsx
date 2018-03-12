@@ -17,7 +17,12 @@ class dummyComponent extends Component {
     return (
       <div className={classes.dummyClasses}>
         {this.state.out ? <p className="testing-purposes">{this.state.name}</p> : null}
-        <img src={monochromeGirl} alt="girl-pic" className={classes.girlImg} />
+        <img
+          style={{ width: 200 }}
+          src={monochromeGirl}
+          alt="girl-pic"
+          className={classes.girlImg}
+        />
       </div>
     );
   }
