@@ -7,6 +7,18 @@ import { incrementCounter, decrementCounter } from '../../store/counter/actions'
 import { onStoreResult, onDeleteResult } from '../../store/result/actions';
 
 class Home extends Component {
+  static defaultProps = {
+    counter: 0,
+  }
+  static propTypes = {
+    counter: PropTypes.number,
+    incrementCounter: PropTypes.func,
+    decrementCounter: PropTypes.func,
+    onStoreResult: PropTypes.func,
+    onDeleteResult: PropTypes.func,
+    allResults: PropTypes.arrayOf(PropTypes.object),
+  }
+
   state = {
     searchTerm: 'Home...',
   };
@@ -49,19 +61,6 @@ class Home extends Component {
     );
   }
 }
-
-Home.defaultProps = {
-  counter: 0,
-};
-
-Home.propTypes = {
-  counter: PropTypes.number,
-  incrementCounter: PropTypes.func,
-  decrementCounter: PropTypes.func,
-  onStoreResult: PropTypes.func,
-  onDeleteResult: PropTypes.func,
-  allResults: PropTypes.arrayOf(PropTypes.object),
-};
 
 const mapStateToProps = (state) => {
   // Will be available in container as
