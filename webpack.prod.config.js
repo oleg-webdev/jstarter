@@ -108,10 +108,6 @@ module.exports = {
         loader: 'html-loader',
       },
       {
-        test: /\.hbs$/,
-        loader: 'handlebars-loader',
-      },
-      {
         test: /\.(jpe?g|png|gif|ico)$/,
         use: [
           {

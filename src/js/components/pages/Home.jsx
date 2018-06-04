@@ -11,8 +11,8 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    console.log(this.state.searchTerm);
-    console.log(this.inputElem);
+    // console.log(this.state.searchTerm);
+    // console.log(this.inputElem);
   }
 
   onUserSearch = (event) => {
