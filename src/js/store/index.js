@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import counterReducer from './reducers/counter';
-import resultReducer from './reducers/result';
+import counterReducer from './counter/reducer';
+import resultReducer from './resultsdb/reducer';
 // import crashReporter from './middlewares/logger';
 
 const rootReducer = combineReducers({

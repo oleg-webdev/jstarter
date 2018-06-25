@@ -1,5 +1,5 @@
 import { makeId } from '../../helpers/helper';
-import * as types from '../actions/types';
+import * as types from './types';
 
 const initialState = {
   allResults: [],

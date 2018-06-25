@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 
 class AboutComponent extends Component {
+  state = {
+    searchTerm: 'About...',
+  };
+
   static getDerivedStateFromProps(nextProps, prevState) {
     console.log('getDerivedStateFromProps');
 
     return prevState;
   }
 
-  state = {
-    searchTerm: 'About...',
-  };
-
   componentDidMount() {
     console.log('did mount');
   }
-
 
   render() {
     return (

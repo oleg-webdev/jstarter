@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import DummyComponent from '../DummyComponent/DummyComponent';
 
-import * as acts from '../../store/actions';
+import * as counterActions from '../../store/counter/actions';
+import * as resultsdbActions from '../../store/resultsdb/actions';
 
 class Home extends Component {
+  static propTypes = {
+    counter: PropTypes.number,
+    incrementCounter: PropTypes.func,
+    decrementCounter: PropTypes.func,
+    onStoreResult: PropTypes.func,
+    onDeleteResult: PropTypes.func,
+    allResults: PropTypes.arrayOf(PropTypes.object),
+  }
+
+  static defaultProps = {
+    counter: 0,
+  }
+
   state = {
     searchTerm: 'Home...',
   };
@@ -49,19 +64,6 @@ class Home extends Component {
   }
 }
 
-Home.defaultProps = {
-  counter: 0,
-};
-
-Home.propTypes = {
-  counter: PropTypes.number,
-  incrementCounter: PropTypes.func,
-  decrementCounter: PropTypes.func,
-  onStoreResult: PropTypes.func,
-  onDeleteResult: PropTypes.func,
-  allResults: PropTypes.arrayOf(PropTypes.object),
-};
-
 const mapStateToProps = (state) => {
   // Will be available in container as
   // this.props.counter
@@ -71,13 +73,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    incrementCounter: () => dispatch(acts.incrementCounter(1)),
-    decrementCounter: () => dispatch(acts.decrementCounter()),
-    onStoreResult: result => acts.onStoreResult(result, dispatch), // Async action
-    onDeleteResult: id => dispatch(acts.onDeleteResult(id)),
-  };
-};
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    ...counterActions,
+    ...resultsdbActions,
+  }, dispatch)
+);
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
