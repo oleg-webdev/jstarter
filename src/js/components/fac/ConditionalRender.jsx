@@ -1,9 +1,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loader from '../Ui/Loader';
 
 const ConditionalRender = ({ canIrender, children, showPreloader }) => {
-  const fallback = showPreloader ? <p>Loading...</p> : null;
+  const fallback = showPreloader ? <Loader /> : null;
   return (
     canIrender ? children() : fallback
   );

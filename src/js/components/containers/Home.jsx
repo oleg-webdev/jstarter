@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DummyComponent from '../DummyComponent/DummyComponent';
+import Cr from '../fac/ConditionalRender';
 
 import * as counterActions from '../../store/counter/actions';
 import * as resultsdbActions from '../../store/resultsdb/actions';
@@ -23,11 +24,15 @@ class Home extends Component {
 
   state = {
     searchTerm: 'Home...',
+    rendCond: false,
   };
 
   componentDidMount() {
     // console.log(this.state.searchTerm);
     // console.log(this.inputElem);
+    setTimeout(() => {
+      this.setState({ rendCond: true });
+    }, 3000);
   }
 
   onUserSearch = (event) => {
@@ -35,7 +40,7 @@ class Home extends Component {
   };
 
   render() {
-    const { searchTerm } = this.state;
+    const { searchTerm, rendCond } = this.state;
     const {
       counter,
       allResults, incrementCounter,
@@ -45,6 +50,11 @@ class Home extends Component {
     return (
       <div>
         <h3>Lorem, ipsum dolor...</h3>
+        <Cr canIrender={rendCond} showPreloader>
+          {() => (
+            <div>Shown instead preloader</div>
+          )}
+        </Cr>
         <DummyComponent />
         <input
           type="text"

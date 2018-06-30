@@ -1,0 +1,25 @@
+:global {
+  .appPreloader {
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+  
+    > span {
+      display: block;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #348adb;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      :local {
+        animation: spin 2s linear infinite;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
