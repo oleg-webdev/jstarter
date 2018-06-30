@@ -22,16 +22,24 @@ class Home extends Component {
     counter: 0,
   }
 
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
   state = {
     searchTerm: 'Home...',
     rendCond: false,
   };
+
 
   componentDidMount() {
     // console.log(this.state.searchTerm);
     // console.log(this.inputElem);
     setTimeout(() => {
       this.setState({ rendCond: true });
+
+      console.log(this.myRef);
     }, 3000);
   }
 
@@ -49,7 +57,7 @@ class Home extends Component {
     } = this.props;
     return (
       <div>
-        <h3>Lorem, ipsum dolor...</h3>
+        <h3 ref={this.myRef}>Lorem, ipsum dolor...</h3>
         <Cr canIrender={rendCond} showPreloader>
           {() => (
             <div>Shown instead preloader</div>
