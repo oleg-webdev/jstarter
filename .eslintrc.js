@@ -9,7 +9,7 @@ module.exports = {
     "no-console": 0,
     'arrow-body-style': 0,
     "no-case-declarations": 0,
-    // "react/prefer-stateless-function": 0,
+    "import/no-extraneous-dependencies": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/no-did-update-set-state": 0,
     "react/no-unescaped-entities": 0,
@@ -36,5 +36,13 @@ module.exports = {
     "localStorage": true,
     "sessionStorage": true,
   },
-  "extends": "airbnb"
+  "extends": "airbnb",
+
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: 'webpack.config.js'
+      }
+    }
+  }
 };

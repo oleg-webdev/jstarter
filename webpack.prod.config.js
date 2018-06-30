@@ -21,6 +21,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      '@store': path.join(__dirname, './src/js/store'),
+    },
   },
   module: {
     rules: [
@@ -43,6 +46,7 @@ module.exports = {
                 modules: true,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
                 sourceMap: false,
+                minimize: true,
               },
             },
             {
@@ -78,6 +82,7 @@ module.exports = {
                 importLoaders: 2,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
                 sourceMap: false,
+                minimize: true,
               },
             },
             'sass-loader',
@@ -93,6 +98,7 @@ module.exports = {
               loader: 'css-loader',
               options: {
                 sourceMap: false,
+                minimize: true,
               },
             },
             'less-loader',

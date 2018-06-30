@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as counterActions from '@store/counter/actions';
+import * as resultsdbActions from '@store/resultsdb/actions';
 import DummyComponent from '../DummyComponent/DummyComponent';
 import Cr from '../fac/ConditionalRender';
-
-import * as counterActions from '../../store/counter/actions';
-import * as resultsdbActions from '../../store/resultsdb/actions';
 
 class Home extends Component {
   static propTypes = {
@@ -37,7 +36,7 @@ class Home extends Component {
     // console.log(this.state.searchTerm);
     // console.log(this.inputElem);
     setTimeout(() => {
-      this.setState({ rendCond: true });
+      // this.setState({ rendCond: true });
 
       console.log(this.myRef);
     }, 3000);

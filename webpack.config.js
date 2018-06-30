@@ -8,6 +8,8 @@ const flexbugsFixes = require('postcss-flexbugs-fixes');
 
 module.exports = {
   mode: 'development',
+  // devtool: 'source-map',
+  // devtool: 'inline-source-map',
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'babel-polyfill',
@@ -26,6 +28,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      '@store': path.join(__dirname, './src/js/store'),
+    },
   },
   module: {
     rules: [
@@ -48,7 +53,6 @@ module.exports = {
                 importLoaders: 1,
                 modules: true,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
-                sourceMap: true,
               },
             },
             {
@@ -83,7 +87,6 @@ module.exports = {
                 modules: true,
                 importLoaders: 2,
                 localIdentName: '[name]__[local]_[hash:base64:5]',
-                sourceMap: false,
               },
             },
             'sass-loader',

@@ -1,6 +1,13 @@
 {
   "compilerOptions": {
-      "experimentalDecorators": true,
-      "allowJs": true
+    "baseUrl": ".",
+    "rootDir": ".",
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "paths": {
+      "@store/*": [
+        "src/js/store/*"
+      ]
+    }
   }
 }
