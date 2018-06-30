@@ -10,6 +10,7 @@ module.exports = {
     'arrow-body-style': 0,
     "no-case-declarations": 0,
     // "react/prefer-stateless-function": 0,
+    "react/jsx-one-expression-per-line": "off",
     "react/no-did-update-set-state": 0,
     "react/no-unescaped-entities": 0,
     "react/forbid-prop-types": 0,

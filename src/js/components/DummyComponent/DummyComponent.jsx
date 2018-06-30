@@ -14,9 +14,10 @@ class dummyComponent extends Component {
 
 
   render() {
+    const { out, name } = this.state;
     return (
       <div className={classes.dummyClasses}>
-        {this.state.out ? <p className="testing-purposes">{this.state.name}</p> : null}
+        {out ? <p className="testing-purposes">{name}</p> : null}
         <img src={monochromeGirl} alt="girl-pic" className={classes.girlImg} />
       </div>
     );

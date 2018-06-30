@@ -35,27 +35,42 @@ class Home extends Component {
   };
 
   render() {
+    const { searchTerm } = this.state;
+    const {
+      counter,
+      allResults, incrementCounter,
+      onStoreResult, decrementCounter,
+      onDeleteResult,
+    } = this.props;
     return (
       <div>
         <h3>Lorem, ipsum dolor...</h3>
         <DummyComponent />
         <input
           type="text"
-          value={this.state.searchTerm}
+          value={searchTerm}
           onChange={this.onUserSearch}
           ref={(input) => {
             this.inputElem = input;
           }}
         />
-        <button onClick={() => this.props.incrementCounter(1)}>Increment</button>
-        <button onClick={this.props.decrementCounter}>Decrement</button>
-        <p>{this.state.searchTerm}</p>
-        <p>{this.props.counter}</p>
-        <button onClick={() => this.props.onStoreResult(this.props.counter)}>Store Result</button>
+        <button type="button" onClick={() => incrementCounter(1)}>
+          Increment
+        </button>
+        <button type="button" onClick={decrementCounter}>
+          Decrement
+        </button>
+        <p>{searchTerm}</p>
+        <p>{counter}</p>
+        <button type="button" onClick={() => onStoreResult(counter)}>
+          Store Result
+        </button>
         <ul>
-          {this.props.allResults.map(elem => (
-            <li key={elem.id} onClick={() => this.props.onDeleteResult(elem.id)}>
-              {elem.value} - {elem.id}
+          {allResults.map(elem => (
+            <li key={elem.id} onClick={() => onDeleteResult(elem.id)}>
+              {elem.value}
+              {' '} - {' '}
+              {elem.id}
             </li>
           ))}
         </ul>

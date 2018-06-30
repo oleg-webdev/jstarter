@@ -5,20 +5,21 @@ class AboutComponent extends Component {
     searchTerm: 'About...',
   };
 
+  componentDidMount() {
+    console.log('did mount');
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     console.log('getDerivedStateFromProps');
 
     return prevState;
   }
 
-  componentDidMount() {
-    console.log('did mount');
-  }
-
   render() {
+    const { searchTerm } = this.state;
     return (
       <div>
-        <p>{this.state.searchTerm}</p>
+        <p>{searchTerm}</p>
         <p>
           Loremsdsdfs
         </p>
