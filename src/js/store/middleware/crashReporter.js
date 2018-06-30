@@ -12,4 +12,3 @@ const crashReporter = store => next => (action) => {
 };
 
 export default crashReporter;
-
