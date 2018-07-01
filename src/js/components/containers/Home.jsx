@@ -1,5 +1,5 @@
+// @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as counterActions from '@store/counter/actions';
@@ -7,23 +7,26 @@ import * as resultsdbActions from '@store/resultsdb/actions';
 import DummyComponent from '../DummyComponent/DummyComponent';
 import Cr from '../fac/ConditionalRender';
 
-class Home extends Component {
-  static propTypes = {
-    counter: PropTypes.number,
-    incrementCounter: PropTypes.func,
-    decrementCounter: PropTypes.func,
-    onStoreResult: PropTypes.func,
-    onDeleteResult: PropTypes.func,
-    allResults: PropTypes.arrayOf(PropTypes.object),
-  }
+type Props = {
+  counter: number,
+  incrementCounter: (data:number) => void,
+  decrementCounter: (data:number) => void,
+  onStoreResult: (counter:number) => void,
+  onDeleteResult: (elemId: string) => void,
+  allResults: Array<{id: string, value: string}>,
+}
 
-  static defaultProps = {
-    counter: 0,
-  }
+type State = {
+  searchTerm: string,
+  rendCond: boolean,
+}
+
+class Home extends Component<Props, State> {
+  inputElem = null;
 
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();
+    this.inputElem = React.createRef();
   }
 
   state = {
@@ -32,15 +35,13 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    // console.log(this.state.searchTerm);
-    // console.log(this.inputElem);
     setTimeout(() => {
       this.setState({ rendCond: true });
-      console.log(this.myRef);
+      console.log(this.inputElem);
     }, 3000);
   }
 
-  onUserSearch = (event) => {
+  onUserSearch = (event: KeyboardEvent) => {
     this.setState({ searchTerm: event.target.value });
   };
 
@@ -54,7 +55,7 @@ class Home extends Component {
     } = this.props;
     return (
       <div>
-        <h3 ref={this.myRef}>Lorem, ipsum dolor...</h3>
+        <h3>Lorem, ipsum dolor...</h3>
         <Cr canIrender={rendCond} showPreloader>
           {() => (
             <div>Shown instead preloader</div>
@@ -65,10 +66,9 @@ class Home extends Component {
           type="text"
           value={searchTerm}
           onChange={this.onUserSearch}
-          ref={(input) => {
-            this.inputElem = input;
-          }}
+          ref={this.inputElem}
         />
+
         <button type="button" onClick={() => incrementCounter(1)}>
           Increment
         </button>
@@ -103,7 +103,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = dispatch => (
+const mapDispatchToProps = (dispatch: Dispatch) => (
   bindActionCreators({
     ...counterActions,
     ...resultsdbActions,

@@ -1,0 +1,12 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/styled-components/*
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.name_mapper='^@store' ->'<PROJECT_ROOT>/src/js/store'
+
+[strict]

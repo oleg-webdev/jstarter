@@ -35,6 +35,9 @@ module.exports = {
     "navigator": true,
     "localStorage": true,
     "sessionStorage": true,
+    "Dispatch": true,
+    "KeyboardEvent": true,
+    "MouseEvent": true,
   },
   "extends": "airbnb",
 

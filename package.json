@@ -1,14 +1,16 @@
 {
   "name": "cb-react",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open",
     "prod": "webpack --config webpack.prod.config.js --progress",
     "test": "jest",
+    "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || (exit 0)",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "postinstall": "npm run flow-typed"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
@@ -42,6 +44,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
@@ -59,6 +62,7 @@
     "eslint-plugin-react": "^7.10.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
+    "flow-bin": "^0.75.0",
     "handlebars": "^4.0.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",

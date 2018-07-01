@@ -2,4 +2,13 @@ yarn-error.log
 .jsbeautifyrc
 dist/
 node_modules/
+
+#tests
 coverage/
+
+# OSX
+.DS_Store
+
+# flow-typed
+flow-typed/npm/*
+!flow-typed/npm/module_vx.x.x.js
