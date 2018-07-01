@@ -31,13 +31,11 @@ class Home extends Component {
     rendCond: false,
   };
 
-
   componentDidMount() {
     // console.log(this.state.searchTerm);
     // console.log(this.inputElem);
     setTimeout(() => {
-      // this.setState({ rendCond: true });
-
+      this.setState({ rendCond: true });
       console.log(this.myRef);
     }, 3000);
   }
