@@ -9,9 +9,9 @@ import Cr from '../fac/ConditionalRender';
 
 type Props = {
   counter: number,
-  incrementCounter: (data:number) => void,
-  decrementCounter: (data:number) => void,
-  onStoreResult: (counter:number) => void,
+  incrementCounter: (data: number) => void,
+  decrementCounter: (data: number) => void,
+  onStoreResult: (counter: number) => void,
   onDeleteResult: (elemId: string) => void,
   allResults: Array<{id: string, value: string}>,
 }
@@ -41,8 +41,9 @@ class Home extends Component<Props, State> {
     }, 3000);
   }
 
-  onUserSearch = (event: KeyboardEvent) => {
-    this.setState({ searchTerm: event.target.value });
+  // SyntheticKeyboardEvent
+  onUserSearch = ({ currentTarget }: SyntheticKeyboardEvent<*>) => {
+    this.setState({ searchTerm: currentTarget.value });
   };
 
   render() {

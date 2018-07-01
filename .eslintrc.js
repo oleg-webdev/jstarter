@@ -35,11 +35,14 @@ module.exports = {
     "navigator": true,
     "localStorage": true,
     "sessionStorage": true,
-    "Dispatch": true,
-    "KeyboardEvent": true,
-    "MouseEvent": true,
   },
-  "extends": "airbnb",
+  "plugins": [
+    "flowtype"
+  ],
+  "extends": [
+    "plugin:flowtype/recommended",
+    "airbnb"
+  ],
 
   settings: {
     'import/resolver': {
