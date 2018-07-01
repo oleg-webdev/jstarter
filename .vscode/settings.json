@@ -1,0 +1,12 @@
+{
+  "javascript.validate.enable": false,
+  "search.exclude": {
+    ".git": true,
+    ".eslintcache": true,
+    "bower_components": true,
+    "flow-typed": true,
+    "node_modules": true,
+    "npm-debug.log.*": true,
+    "yarn.lock": true
+  }
+}
