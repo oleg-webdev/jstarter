@@ -12,7 +12,6 @@ class dummyComponent extends Component {
     // console.log(girl);
   }
 
-
   render() {
     const { out, name } = this.state;
     return (

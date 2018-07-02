@@ -2,12 +2,17 @@ yarn-error.log
 .jsbeautifyrc
 dist/
 node_modules/
+tests.setup.js
+jest.config.js
 
 #tests
 coverage/
+__mocks__/
+*.test.js
 
 # OSX
 .DS_Store
+
 
 # flow-typed
 flow-typed/npm/*
