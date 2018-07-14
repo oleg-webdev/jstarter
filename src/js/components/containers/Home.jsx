@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Subscribe } from 'unstated';
 // import CounterContainer from '@store/counter/Counter';
-import { CounterContainer } from '@store';
+import { Counter } from '@store';
 // import Cr from '../fac/ConditionalRender';
 
 type Props = {}
@@ -20,7 +20,7 @@ class Home extends Component<Props, State> {
 
   render() {
     return (
-      <Subscribe to={[CounterContainer]}>
+      <Subscribe to={[Counter]}>
         {counter => (
           <div>
             <button type="button" onClick={() => counter.decrement()}>-</button>
