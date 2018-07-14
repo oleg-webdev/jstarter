@@ -2,13 +2,11 @@
 // Base
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import { Provider } from 'unstated';
 // hmr
 import { AppContainer } from 'react-hot-loader';
 
 // Redux
-import { Provider } from 'react-redux';
-import store from './store/';
 import '../css/style.scss';
 import AppEntry from './components/AppEntry';
 
@@ -18,10 +16,8 @@ if (root !== null) {
   const render = (Component) => {
     ReactDOM.render(
       <AppContainer>
-        <Provider store={store}>
-
+        <Provider>
           <Component />
-
         </Provider>
       </AppContainer>,
       root,
