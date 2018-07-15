@@ -1,0 +1,33 @@
+.tabContainerClass {
+
+  :global {
+    // tabs
+    ul {
+      display: flex;
+
+      > li {
+        flex-basis: 50%;
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        border-bottom: 2px solid transparent;
+
+        &.active-tabclass {
+          border-bottom: 2px solid rgb(143, 142, 142);
+        }
+
+        button {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    // tabs content
+    // > div {}
+  }
+  
+}

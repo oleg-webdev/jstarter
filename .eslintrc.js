@@ -11,6 +11,7 @@ module.exports = {
     "no-case-declarations": 0,
     "import/no-extraneous-dependencies": "off",
     "react/jsx-one-expression-per-line": "off",
+    "react/destructuring-assignment": "off",
     "react/no-did-update-set-state": 0,
     "react/no-unescaped-entities": 0,
     "react/forbid-prop-types": 0,
