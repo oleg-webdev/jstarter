@@ -5,9 +5,7 @@ import Loader from '../Ui/Loader';
 
 const ConditionalRender = ({ canIrender, children, showPreloader }) => {
   const fallback = showPreloader ? <Loader /> : null;
-  return (
-    canIrender ? children() : fallback
-  );
+  return canIrender ? children() : fallback;
 };
 
 ConditionalRender.defaultProps = {

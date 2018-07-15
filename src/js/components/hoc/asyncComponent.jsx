@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const asyncComponent = (importComponent) => {
-  return class extends Component {
+  class AsyncComponent extends Component {
     state = {
       component: null,
     }
@@ -18,7 +18,15 @@ const asyncComponent = (importComponent) => {
       const C = component;
       return C ? <C {...this.props} /> : null;
     }
-  };
+  }
+
+  const innerName = importComponent.displayName
+    || importComponent.name
+    || 'importComponent';
+
+  AsyncComponent.displayName = `AsyncComponent(${innerName})`;
+
+  return AsyncComponent;
 };
 
 export default asyncComponent;

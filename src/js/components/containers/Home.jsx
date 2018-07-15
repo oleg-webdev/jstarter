@@ -6,6 +6,7 @@ import * as counterActions from '@store/counter/actions';
 import * as resultsdbActions from '@store/resultsdb/actions';
 import DummyComponent from '../DummyComponent/DummyComponent';
 import Cr from '../fac/ConditionalRender';
+import TestComponent from './TestComponent';
 
 type Props = {
   counter: number,
@@ -57,6 +58,7 @@ class Home extends Component<Props, State> {
     return (
       <div>
         <h3>Lorem, ipsum dolor...</h3>
+        <TestComponent somedata="thestring" />
         <Cr canIrender={rendCond} showPreloader>
           {() => (
             <div>Shown instead preloader</div>
