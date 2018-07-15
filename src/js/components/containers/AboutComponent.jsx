@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TabsWrapper, TabPanel } from '../Ui/Tabs/Tabs';
+import Toggle from '../Ui/Toggle/Toggle';
 
 class AboutComponent extends Component {
   state = {
@@ -20,6 +21,12 @@ class AboutComponent extends Component {
     const { searchTerm } = this.state;
     return (
       <div>
+        <Toggle>
+          <Toggle.On>On</Toggle.On>
+          <Toggle.Button />
+          <Toggle.Off>Off</Toggle.Off>
+        </Toggle>
+
         <p>{searchTerm}</p>
         <TabsWrapper defaultActiveKey="key-1">
           <TabPanel tabkey="key-1" title="Key 1">
