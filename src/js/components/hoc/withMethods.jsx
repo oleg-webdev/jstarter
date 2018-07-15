@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 
-function withMethods(Component) {
+export default function withMethods(Component) {
   class WithMethods extends React.Component {
     state = {
       data: ['1', 2],
@@ -28,5 +28,3 @@ function withMethods(Component) {
 
   return WithMethods;
 }
-
-export default withMethods;

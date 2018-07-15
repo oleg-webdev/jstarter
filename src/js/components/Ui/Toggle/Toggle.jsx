@@ -30,13 +30,24 @@ class Toggle extends Component<Props> {
     );
   }
 
+  allowedTypes = ({ type }) => {
+    return [
+      (<Toggle.On />).type,
+      (<Toggle.Off />).type,
+      (<Toggle.Button />).type,
+    ].includes(type);
+  }
+
   render() {
     return Children.map(
       this.props.children,
-      childElem => React.cloneElement(childElem, {
-        on: this.state.on,
-        toggle: this.toggle,
-      }),
+      (childElem) => {
+        const elemProps = this.allowedTypes(childElem) ? {
+          on: this.state.on,
+          toggle: this.toggle,
+        } : childElem.props;
+        return React.cloneElement(childElem, elemProps);
+      },
     );
   }
 }

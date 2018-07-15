@@ -23,6 +23,7 @@ class AboutComponent extends Component {
       <div>
         <Toggle>
           <Toggle.On>On</Toggle.On>
+          <span />
           <Toggle.Button />
           <Toggle.Off>Off</Toggle.Off>
         </Toggle>
