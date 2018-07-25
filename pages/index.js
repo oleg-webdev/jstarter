@@ -1,8 +1,8 @@
 // @flow
-
 import React from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
+import fetch from 'isomorphic-unfetch';
 import '../client/style/styles.scss';
 import css from '../client/style/custom.scss';
 
