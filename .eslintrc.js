@@ -16,6 +16,7 @@ module.exports = {
     "react/no-unescaped-entities": 0,
     "react/forbid-prop-types": 0,
     "react/require-default-props": 0,
+    "jsx-a11y/anchor-is-valid": 0,
     "jsx-a11y/label-has-for": 0,
     "func-names": ["error", "never"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -23,11 +24,6 @@ module.exports = {
     // Supress clicking on non interractive elements
     "jsx-a11y/no-noninteractive-element-interactions": 0,
     "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/anchor-is-valid": [ "error", {
-      "components": [ "Link" ],
-      "specialLink": [ "to", "hrefLeft", "hrefRight" ],
-      "aspects": [ "noHref", "invalidHref", "preferButton" ]
-    }],
   },
   "parser": "babel-eslint",
   "globals": {

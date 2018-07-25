@@ -1,12 +1,11 @@
 // @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Link from 'next/link';
 import { bindActionCreators } from 'redux';
-import * as counterActions from '@store/counter/actions';
-import * as resultsdbActions from '@store/resultsdb/actions';
-import DummyComponent from '../DummyComponent/DummyComponent';
-import Cr from '../fac/ConditionalRender';
-import TestComponent from './TestComponent';
+import * as counterActions from '../store/counter/actions';
+import * as resultsdbActions from '../store/resultsdb/actions';
+import Cr from './fac/ConditionalRender';
 
 type Props = {
   counter: number,
@@ -22,8 +21,10 @@ type State = {
   rendCond: boolean,
 }
 
-class Home extends Component<Props, State> {
+class User extends Component<Props, State> {
   inputElem = null;
+
+  timeout = null;
 
   constructor(props) {
     super(props);
@@ -31,15 +32,20 @@ class Home extends Component<Props, State> {
   }
 
   state = {
-    searchTerm: 'Home...',
+    searchTerm: 'User...',
     rendCond: false,
   };
 
   componentDidMount() {
-    setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.setState({ rendCond: true });
       console.log(this.inputElem);
     }, 3000);
+  }
+
+  componentWillUnmount() {
+    this.inputElem = null;
+    clearTimeout(this.timeout);
   }
 
   // SyntheticKeyboardEvent
@@ -58,13 +64,11 @@ class Home extends Component<Props, State> {
     return (
       <div>
         <h3>Lorem, ipsum dolor...</h3>
-        <TestComponent somedata="thestring" />
         <Cr canIrender={rendCond} showPreloader>
           {() => (
             <div>Shown instead preloader</div>
           )}
         </Cr>
-        <DummyComponent />
         <input
           type="text"
           value={searchTerm}
@@ -83,6 +87,7 @@ class Home extends Component<Props, State> {
         <button type="button" onClick={() => onStoreResult(counter)}>
           Store Result
         </button>
+        <p><Link href="/"><a>HOME</a></Link></p>
         <ul>
           {allResults.map(elem => (
             <li key={elem.id} onClick={() => onDeleteResult(elem.id)}>
@@ -113,5 +118,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => (
   }, dispatch)
 );
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(User);
