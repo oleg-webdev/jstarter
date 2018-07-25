@@ -22,14 +22,9 @@ type State = {
 }
 
 class User extends Component<Props, State> {
-  inputElem = null;
+  inputElem = React.createRef();
 
   timeout = null;
-
-  constructor(props) {
-    super(props);
-    this.inputElem = React.createRef();
-  }
 
   state = {
     searchTerm: 'User...',

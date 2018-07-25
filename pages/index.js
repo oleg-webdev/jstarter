@@ -9,8 +9,8 @@ console.log(css);
 export default () => {
   return (
     <div className={css.exmpls}>
-      <h1>Hello indexssssss</h1>
-      <p><Link href="/auth"><a>Auth</a></Link></p>
+      <h1>Index page</h1>
+      <p><Link href="/auth"><a>Navigat to User component</a></Link></p>
       <button type="button" onClick={() => Router.push('/auth')}>AUth</button>
     </div>
   );

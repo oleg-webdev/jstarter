@@ -5,7 +5,7 @@ const authIndexPage = () => {
   return (
     <div>
       <h1>Hello auth</h1>
-      <User name="Alice" age="6" />
+      <User />
     </div>
   );
 };
