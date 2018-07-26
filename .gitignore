@@ -4,6 +4,8 @@ dist/
 node_modules/
 tests.setup.js
 jest.config.js
+.next
+yarn.lock
 
 #tests
 coverage/

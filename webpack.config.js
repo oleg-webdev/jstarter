@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoPrefixer = require('autoprefixer');
 const flexbugsFixes = require('postcss-flexbugs-fixes');
 
-
 module.exports = {
   mode: 'development',
   // devtool: 'source-map',
@@ -13,7 +12,6 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'babel-polyfill',
-    'react-hot-loader/patch',
     './src/js/main.js',
   ],
   output: {

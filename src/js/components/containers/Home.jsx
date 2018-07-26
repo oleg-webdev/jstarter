@@ -25,6 +25,8 @@ type State = {
 class Home extends Component<Props, State> {
   inputElem = null;
 
+  timeout = null;
+
   constructor(props) {
     super(props);
     this.inputElem = React.createRef();
@@ -36,10 +38,14 @@ class Home extends Component<Props, State> {
   };
 
   componentDidMount() {
-    setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.setState({ rendCond: true });
       console.log(this.inputElem);
     }, 3000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
   }
 
   // SyntheticKeyboardEvent
