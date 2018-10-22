@@ -6,6 +6,7 @@ tests.setup.js
 jest.config.js
 .next
 yarn.lock
+.idea/
 
 #tests
 coverage/
